@@ -30,6 +30,10 @@
   outline: none;
   border: none;
   flex:1;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  color: #575757;
 }
 
 .choice__measurement{

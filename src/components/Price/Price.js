@@ -1,31 +1,37 @@
 import './Price.css'
-
 import React, {useEffect, useState} from "react";
+import Input from '../Input/Input'
 
-export default function Prise({data, setCurrPrice, currentPrice}) {
-
-  // return(
-  //   <li className="choice">
-  //     <p className="choice__description">{data.desc}</p>
-  //     <label className="choice__label">
-  //       <input
-  //         name={data.name}
-  //         type="text"
-  //         className="choice__number"
-  //         value={isContribution ? getPercentage() : valueBall}
-  //         onChange={getInputValue}
-  //         onFocus={focusInputPay}/>
-  //       <div className={`choice__measurement ${isContribution ? 'choice__measurement_type_contribution': ''}`}>{data.name === 'firstPay'? `${valueBall}%`  : data.measurement }</div>
-  //     </label>
-  //     <input
-  //       type="range"
-  //       className="choice__range"
-  //       value={valueBall}
-  //       min={data.min}
-  //       max={data.max}
-  //       name={data.name}
-  //       onChange={getInputValue}/>
-  //     <div style={{width: `${widthFillTrack}px`}} className="choiсe__trace"></div>
-  //   </li>
-  // )
+export default function Price({data, setCurrPrice, currentPrice}) {
+  const [value, setValue] = useState(data.min)
+  const [valueBall, setValueBall] = useState(0)
+  const [widthFillTrack, setWidthFillTrack] = useState(0)
+  const [displayMeasurement, setDisplayMeasurement] = useState(value)
+  useEffect(() => {
+    if(value-data.min >= 0){
+      changeWidthFillTrack()
+    }else{
+      setWidthFillTrack(0)
+    }
+  }, [value])
+  function changeWidthFillTrack() {
+    const widthTracer = (value - data.min) * 120 / data.max
+    setWidthFillTrack(369 / 100 * widthTracer)
+  }
+  function changeValue(e){
+    setValue(e.target.value)  //меняет отображение значения
+    setCurrPrice(e.target.value) //прокидывает значение в Calculator
+}
+  return(
+      <Input
+       data = {data}
+       value = {value}
+       changeValue = {changeValue}
+       isContribution ={false}
+       displayMeasurement = {displayMeasurement}
+       valueBall = {value}
+       changeBallValue = {changeValue}
+       widthFillTrack = {widthFillTrack}
+      />
+  )
 }
