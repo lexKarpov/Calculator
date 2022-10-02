@@ -1,0 +1,33 @@
+@import url(vendor/fonts/nekst/stylesheet.css);
+@import url(vendor/fonts/gilroy/stylesheet.css);
+.App {
+  font-family: Nekst, Arial, sans-serif;
+  font-style:  normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 47px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1440px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
