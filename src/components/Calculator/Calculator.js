@@ -1,6 +1,6 @@
 import './Calculator.css'
 import Choice from "../Chioce/Choice";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 export default function Calculator(){
   const [currentPrice, setCurrentPrice] = useState('')
@@ -28,9 +28,6 @@ export default function Calculator(){
       measurement: 'мес.',
       isContribution: false
     },]
-  // useEffect(() => {
-  //   console.log(currentPrice)
-  // }, [currentPrice])
   return(
     <div className="calculator">
       <ul className="calculator__list">

@@ -6,7 +6,6 @@ export default function Price({data, setCurrPrice, currentPrice}) {
   const [value, setValue] = useState(data.min)
   const [valueBall, setValueBall] = useState(0)
   const [widthFillTrack, setWidthFillTrack] = useState(0)
-  const [displayMeasurement, setDisplayMeasurement] = useState(value)
   useEffect(() => {
     if(value-data.min >= 0){
       changeWidthFillTrack()
@@ -28,7 +27,7 @@ export default function Price({data, setCurrPrice, currentPrice}) {
        value = {value}
        changeValue = {changeValue}
        isContribution ={false}
-       displayMeasurement = {displayMeasurement}
+       displayMeasurement = {data.measurement}
        valueBall = {value}
        changeBallValue = {changeValue}
        widthFillTrack = {widthFillTrack}

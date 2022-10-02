@@ -7,25 +7,33 @@ export default function Term({data, setCurrPrice, currentPrice}) {
   const [value, setValue] = useState(data.min)
   const [valueBall, setValueBall] = useState(value)
   const [widthFillTrack, setWidthFillTrack] = useState(value)
-  const [displayMeasurement, setDisplayMeasurement] = useState(value)
+  const [displayMeasurement, setDisplayMeasurement] = useState(data.measurement)
 
-  function changeValue(e){
-    console.log('changeValue')
+  useEffect(() => {
+    if(value-data.min >= 0){
+      changeWidthFillTrack()
+    }else{
+      setWidthFillTrack(0)
+    }
+  }, [value])
+  function changeWidthFillTrack() {
+    const widthTracer = (value - data.min) * 100 / data.max
+    setWidthFillTrack(369 / 100 * widthTracer)
   }
-  function changeBallValue(){
-    console.log('change value ball')}
-
-  const isContribution = false
+  function changeValue(e){
+    setValue(e.target.value)  //меняет отображение значения
+    setCurrPrice(e.target.value) //прокидывает значение в Calculator
+  }
 
   return(
     <Input
       data = {data}
       value = {value}
       changeValue = {changeValue}
-      isContribution ={isContribution}
+      isContribution ={false}
       displayMeasurement = {displayMeasurement}
-      valueBall = {valueBall}
-      changeBallValue = {changeBallValue}
+      valueBall = {value}
+      changeBallValue = {changeValue}
       widthFillTrack = {widthFillTrack}
     />
   )

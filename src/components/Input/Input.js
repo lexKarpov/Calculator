@@ -14,7 +14,7 @@ export default function Input({data, value, changeValue, isContribution, display
           onChange={changeValue}
           // onFocus={focusInputPay}
         />
-        <div className={`choice__measurement ${isContribution ? 'choice__measurement_type_contribution': ''}`}>{data.name === 'firstPay'? `${displayMeasurement}%`  : data.measurement }</div>
+        <div className={`choice__measurement ${isContribution ? 'choice__measurement_type_contribution': ''}`}>{displayMeasurement}</div>
       </label>
       <input
         type="range"

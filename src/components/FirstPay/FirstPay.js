@@ -7,7 +7,7 @@ export default function FirstPay({data, setCurrPrice, currentPrice}) {
   const [value, setValue] = useState(data.min)
   const [valueBall, setValueBall] = useState(value)
   const [widthFillTrack, setWidthFillTrack] = useState(value)
-  const [displayMeasurement, setDisplayMeasurement] = useState(value)
+  const [displayMeasurement, setDisplayMeasurement] = useState(data.measurement)
 
   function changeValue(e){
     console.log('changeValue')
