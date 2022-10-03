@@ -3,7 +3,7 @@ import './Term.css'
 import React, {useEffect, useState} from "react";
 import Input from "../Input/Input";
 
-export default function Term({data, setCurrPrice, currentPrice}) {
+export default function Term({data, setValues, disabledInput}) {
   const [value, setValue] = useState(data.min)
   const [valueBall, setValueBall] = useState(value)
   const [widthFillTrack, setWidthFillTrack] = useState(value)
@@ -22,10 +22,13 @@ export default function Term({data, setCurrPrice, currentPrice}) {
   }
   function changeValue(e){
     setValue(e.target.value)  //меняет отображение значения
+    // setTerm(e.target.value)
+    setValues(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
 
   return(
     <Input
+      disabledInput={disabledInput}
       data = {data}
       value = {value}
       changeValue = {changeValue}

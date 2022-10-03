@@ -1,11 +1,8 @@
-.calculator{
-
-}
-
 .calculator__list{
   list-style-type: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
+  align-items: center;
 }

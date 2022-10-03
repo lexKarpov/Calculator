@@ -1,0 +1,12 @@
+.choice__submit{
+  width: 426px;
+  height: 68px;
+  background: #FF9514;
+  border-radius: 40px;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}

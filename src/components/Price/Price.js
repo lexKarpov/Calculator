@@ -2,10 +2,10 @@ import './Price.css'
 import React, {useEffect, useState} from "react";
 import Input from '../Input/Input'
 
-export default function Price({data, setCurrPrice, currentPrice}) {
+export default function Price({data, setCurrPrice, setValues, disabledInput}) {
   const [value, setValue] = useState(data.min)
-  const [valueBall, setValueBall] = useState(0)
   const [widthFillTrack, setWidthFillTrack] = useState(0)
+
   useEffect(() => {
     if(value-data.min >= 0){
       changeWidthFillTrack()
@@ -20,9 +20,11 @@ export default function Price({data, setCurrPrice, currentPrice}) {
   function changeValue(e){
     setValue(e.target.value)  //меняет отображение значения
     setCurrPrice(e.target.value) //прокидывает значение в Calculator
+    setValues(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
 }
   return(
       <Input
+       disabledInput={disabledInput}
        data = {data}
        value = {value}
        changeValue = {changeValue}

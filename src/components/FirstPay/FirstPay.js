@@ -3,7 +3,7 @@ import './FirstPay.css'
 import React, {useEffect, useState} from "react";
 import Input from "../Input/Input";
 
-export default function FirstPay({ data, setCurrPrice, currentPrice }) {
+export default function FirstPay({ data, setValues, currentPrice, disabledInput }) {
   const [value, setValue] = useState(data.min)
   const [widthFillTrack, setWidthFillTrack] = useState(value)
   const [displayMeasurement, setDisplayMeasurement] = useState(data.min)
@@ -22,13 +22,11 @@ export default function FirstPay({ data, setCurrPrice, currentPrice }) {
       setWidthFillTrack(0)
     }
   }, [value])
-  function resolveProcentSummury(){
+  function resolveProcentSummury(e){
     const isPrice = currentPrice || 100000
-    // console.log(isPrice)
-    // console.log('displayMeasurement')
-    // console.log(displayMeasurement)
     const sum = displayMeasurement * isPrice / 100
     setResultDisplay(Math.round(sum))
+    setValues(prevState => ({ ...prevState, ['firstPay']: Math.round(sum) }))
   }
   function changeWidthFillTrack() {
     const widthTracer = (value - data.min) * 120 / data.max
@@ -37,16 +35,18 @@ export default function FirstPay({ data, setCurrPrice, currentPrice }) {
   function changeValue(e){
     setValue(e.target.value)  //меняет отображение значения
     setDisplayMeasurement(e.target.value) // отображает проценты в углу
-    resolveProcentSummury()
+    resolveProcentSummury(e)
+    // console.log(e.target.value)
   }
   function changeFocuse(){
     setDisplayMeasurement(resultDisplay)
     resolveProcentSummuryFromInput(resultDisplay)
   }
   function resolveProcentSummuryFromInput(resultDisplay){//при расфокусировке считает сумму
-    console.log(currentPrice)
+    // console.log(currentPrice)
     const sum = currentPrice * resultDisplay / 100
     setResultDisplay(Math.round(sum))
+
   }
   function changeDisplay(e){
     setResultDisplay(e.target.value)
@@ -54,6 +54,7 @@ export default function FirstPay({ data, setCurrPrice, currentPrice }) {
 
   return(
     <Input
+      disabledInput={disabledInput}
       data = {data}
       value = {resultDisplay}
       changeValue = {changeDisplay}

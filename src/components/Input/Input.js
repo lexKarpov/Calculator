@@ -1,15 +1,16 @@
 import './Input.css'
 import React from "react";
 
-export default function Input({data, value, changeValue, isContribution, displayMeasurement, valueBall, changeBallValue, widthFillTrack, changeFocuse}) {
+export default function Input({disabledInput, data, value, changeValue, isContribution, displayMeasurement, valueBall, changeBallValue, widthFillTrack, changeFocuse}) {
+  console.log(disabledInput)
   return(
     <>
       <label className="choice__label">
         <input
+          disabled={disabledInput ? true : false}
           name={data.name}
           type="text"
           className="choice__number"
-          // value={isContribution ? getPercentage : valueBall}
           value={value}
           onChange={changeValue}
           onBlur={changeFocuse}
@@ -17,6 +18,7 @@ export default function Input({data, value, changeValue, isContribution, display
         <div className={`choice__measurement ${isContribution ? 'choice__measurement_type_contribution': ''}`}>{displayMeasurement}</div>
       </label>
       <input
+        disabled={disabledInput ? true : false}
         type="range"
         className="choice__range"
         value={valueBall}
