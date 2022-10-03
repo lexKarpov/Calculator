@@ -3,7 +3,7 @@ import Choice from "../Chioce/Choice";
 import {useState} from "react";
 
 export default function Calculator(){
-  const [currentPrice, setCurrentPrice] = useState('')
+  const [currentPrice, setCurrentPrice] = useState(1000000)
   const descriptionList = [
     {
       desc: 'Стоимость автомобиля',

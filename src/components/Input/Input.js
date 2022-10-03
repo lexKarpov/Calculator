@@ -1,7 +1,7 @@
 import './Input.css'
 import React from "react";
 
-export default function Input({data, value, changeValue, isContribution, displayMeasurement, valueBall, changeBallValue, widthFillTrack}) {
+export default function Input({data, value, changeValue, isContribution, displayMeasurement, valueBall, changeBallValue, widthFillTrack, changeFocuse}) {
   return(
     <>
       <label className="choice__label">
@@ -12,7 +12,7 @@ export default function Input({data, value, changeValue, isContribution, display
           // value={isContribution ? getPercentage : valueBall}
           value={value}
           onChange={changeValue}
-          // onFocus={focusInputPay}
+          onBlur={changeFocuse}
         />
         <div className={`choice__measurement ${isContribution ? 'choice__measurement_type_contribution': ''}`}>{displayMeasurement}</div>
       </label>
